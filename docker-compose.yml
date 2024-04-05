@@ -7,8 +7,8 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_DB : ms_inventory
-      POSTGRES_USER : uncledave
-      POSTGRES_PASSWORD : 0000
+      POSTGRES_USER : postgres
+      POSTGRES_PASSWORD : 0
     ports:
       - 5431:5431
     expose:
@@ -23,9 +23,7 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ms_orders
-      MYSQL_USER : uncledave
-      MYSQL_PASSWORD : 0000
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD : root
     ports:
       - 3306:3306
     expose:
@@ -38,9 +36,9 @@ services:
     image: postgres:16.2
     restart: unless-stopped
     environment:
-      POSTGRES_DB : ms_products
-      POSTGRES_USER : uncledave
-      POSTGRES_PASSWORD : 0000
+      POSTGRES_DB: ms_products
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 0
     ports:
       - 5432:5432
     expose:

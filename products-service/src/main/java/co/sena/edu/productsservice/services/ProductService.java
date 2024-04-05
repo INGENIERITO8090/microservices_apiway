@@ -2,11 +2,14 @@ package co.sena.edu.productsservice.services;
 
 
 import co.sena.edu.productsservice.model.dtos.ProductRequest;
+import co.sena.edu.productsservice.model.dtos.ProductResponse;
 import co.sena.edu.productsservice.model.entities.Product;
 import co.sena.edu.productsservice.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +27,17 @@ public  void addProduct (ProductRequest productRequest){
 
  productRepository.save(product);
  log.info("Product added : {}",product);
+}
+
+public List<ProductResponse> getAllproducts(){
+
+  var products  = productRepository.findAll();
+  return products.stream().map(this::mapToproductResponse).toList();
+
+}
+
+ private ProductResponse mapToproductResponse(Product product) {
+return  ProductResponse.builder().id(product.getId()).sku(product.getSku()).name(product.getName()).description(product.getDescription()).price(product.getPrice()).status(product.getStatus()).build();
 }
 
 

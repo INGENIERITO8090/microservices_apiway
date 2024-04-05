@@ -24,7 +24,7 @@
 
     <modules>
         <module>inventory-services</module>
-        <module>orders_service</module>
+        <module>orders-service</module>
         <module>products-service</module>
     </modules>
 

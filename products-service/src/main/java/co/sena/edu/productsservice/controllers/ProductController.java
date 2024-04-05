@@ -2,12 +2,22 @@ package co.sena.edu.productsservice.controllers;
 
 
 import co.sena.edu.productsservice.model.dtos.ProductRequest;
+import co.sena.edu.productsservice.model.dtos.ProductResponse;
+import co.sena.edu.productsservice.services.ProductService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping ("/api/product")
+@RequiredArgsConstructor
+
 public class ProductController {
+
+
+    private  final ProductService  productService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -16,6 +26,13 @@ public class ProductController {
  this.productService.addProduct(productRequest);
 
     }
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+  public List<ProductResponse> getAllProducts(){
+         return  this.productService.getAllproducts();
+    }
+
+
 
 
 }
